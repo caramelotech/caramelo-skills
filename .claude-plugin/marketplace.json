@@ -10,9 +10,9 @@
     {
       "name": "development",
       "source": "./skills/development",
-      "description": "Code quality, review, security, testing, commit message and product building skills",
+      "description": "Code quality, review, security, testing, commit message, Bruno API collection and product building skills",
       "category": "developer",
-      "tags": ["code-review", "quality", "commit-message", "testing", "unit-tests", "owasp", "security"]
+      "tags": ["code-review", "quality", "commit-message", "testing", "unit-tests", "owasp", "security", "bruno", "api"]
     },
     {
       "name": "writing",

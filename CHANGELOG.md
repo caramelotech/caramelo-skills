@@ -8,6 +8,10 @@ Cada categoria em `skills/` tem sua própria versão, declarada em `.claude-plug
 
 ## [Não lançado]
 
+### Adicionado
+
+- Skill `bruno-collection` na categoria `development` (1.4.0): cria e mantém collections do Bruno a partir do código do projeto, de uma spec OpenAPI ou de uma lista de endpoints. Gera os arquivos em YAML (OpenCollection) em `.bruno/` na raiz do repositório, organiza pastas por recurso, ambientes e variáveis por escopo, configura a autenticação com credenciais em `.env` ignorado pelo git (ou variáveis secretas do Bruno) e tokens em variáveis de runtime, e documenta as regras de cada endpoint (validações, permissões, respostas, efeitos colaterais). Novas preferências em `skills.bruno-collection`: `secretStrategy`, `environments`, e por repositório `collectionPath` e `format`.
+
 ### Alterado
 
 - Repositório e marketplace renomeados de `caramelo-kit` para `caramelo-skills`. Quem já tinha o marketplace instalado deve removê-lo (`/plugin marketplace remove caramelo-kit`), adicioná-lo de novo (`/plugin marketplace add caramelotech/caramelo-skills`) e reinstalar as categorias como `<categoria>@caramelo-skills`.

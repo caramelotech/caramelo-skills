@@ -1,11 +1,11 @@
 {
   "name": "development",
-  "version": "1.3.0",
-  "description": "Skills de desenvolvimento: qualidade, revisão de código, segurança, testes, mensagens de commit e construção de produtos do zero",
+  "version": "1.4.0",
+  "description": "Skills de desenvolvimento: qualidade, revisão de código, segurança, testes, mensagens de commit, collections de API no Bruno e construção de produtos do zero",
   "author": {
     "name": "Caramelo Tech",
     "url": "https://github.com/caramelotech"
   },
   "license": "MIT",
-  "keywords": ["code-review", "quality", "refactoring", "commit-message", "mvp", "product", "testing", "unit-tests", "security", "owasp"]
+  "keywords": ["code-review", "quality", "refactoring", "commit-message", "mvp", "product", "testing", "unit-tests", "security", "owasp", "bruno", "api", "api-client"]
 }

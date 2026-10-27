@@ -8,14 +8,14 @@ O repositório tem quatro áreas principais: `skills/` (skills agrupadas por cat
 
 ## Categorias disponíveis
 
-| Categoria                           | Descrição                                             |
-| ----------------------------------- | ----------------------------------------------------- |
-| [`development`](skills/development) | Qualidade, revisão, segurança, testes, commits e MVPs |
-| [`writing`](skills/writing)         | Criação de textos, humanização e documentação         |
-| [`devops`](skills/devops)           | Infraestrutura e containerização                      |
-| [`design`](skills/design)           | Aplicação de design systems em apresentações e sites  |
-| [`study`](skills/study)             | Estudos e produtividade: notas de aula para revisão   |
-| [`career`](skills/career)           | Carreira: cartas, textos de candidatura e entrevistas |
+| Categoria                           | Descrição                                                                   |
+| ----------------------------------- | --------------------------------------------------------------------------- |
+| [`development`](skills/development) | Qualidade, revisão, segurança, testes, commits, collections do Bruno e MVPs |
+| [`writing`](skills/writing)         | Criação de textos, humanização e documentação                               |
+| [`devops`](skills/devops)           | Infraestrutura e containerização                                            |
+| [`design`](skills/design)           | Aplicação de design systems em apresentações e sites                        |
+| [`study`](skills/study)             | Estudos e produtividade: notas de aula para revisão                         |
+| [`career`](skills/career)           | Carreira: cartas, textos de candidatura e entrevistas                       |
 
 ## Como instalar
 

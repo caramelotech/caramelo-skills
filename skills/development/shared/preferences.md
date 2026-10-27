@@ -1,6 +1,6 @@
 # Preferências de desenvolvimento
 
-Procedimento compartilhado pelas skills da categoria `development` (`commit-message`, `code-review`, `owasp-check`, `unit-test-generator`, `technical-cofounder`). Cada skill aponta para este arquivo e segue as instruções abaixo antes de começar a tarefa.
+Procedimento compartilhado pelas skills da categoria `development` (`commit-message`, `code-review`, `owasp-check`, `unit-test-generator`, `technical-cofounder`, `bruno-collection`). Cada skill aponta para este arquivo e segue as instruções abaixo antes de começar a tarefa.
 
 O objetivo é que a pessoa decida uma vez como quer trabalhar e a skill respeite isso nas próximas chamadas: se ela quiser, o agente trabalha de forma independente, sem parar para esperar respostas.
 
@@ -38,12 +38,17 @@ As preferências são a memória das skills de desenvolvimento entre sessões. �
       "output": "write",
       "runTests": true,
       "naming": "project"
+    },
+    "bruno-collection": {
+      "secretStrategy": "dotenv",
+      "environments": ["local"]
     }
   },
   "repos": {
     "github.com/caramelotech/caramelo-skills": {
       "commit-message": { "protectedBranchPolicy": "allow" },
-      "unit-test-generator": { "framework": "vitest", "testDir": "src/**/__tests__" }
+      "unit-test-generator": { "framework": "vitest", "testDir": "src/**/__tests__" },
+      "bruno-collection": { "collectionPath": ".bruno", "format": "yml" }
     }
   },
   "updated": "2026-10-10"
