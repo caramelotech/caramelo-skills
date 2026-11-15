@@ -10,11 +10,25 @@ Cada categoria em `skills/` tem sua própria versão, declarada em `.claude-plug
 
 ### Adicionado
 
+- Skill `markitdown` na categoria `development`: converte documentos locais (PDF, Word, PowerPoint, Excel, Outlook `.msg`, HTML, CSV, JSON, XML, EPUB, notebooks, ZIP e imagens) para Markdown com o MarkItDown da Microsoft, de forma totalmente local. A conversão passa pelo script `scripts/convert.py`, que bloqueia socket e DNS no processo, recusa URLs, áudio e vídeo, nunca habilita plugins, Azure ou LLM externo, limita tamanho de arquivo, contêineres ZIP (proteção contra ZIP bomb) e páginas de OCR, e não sobrescreve arquivos sem `--force`. Dependências travadas por versão e hash em `scripts/convert.py.lock`, executadas com `uv run --offline --locked`; o único acesso à rede é a instalação inicial, sempre com autorização. OCR local com Tesseract para PDFs escaneados e imagens. Novas preferências em `skills.markitdown`: `output`, `ocr` e `ocrLang`.
 - Skill `bruno-collection` na categoria `development` (1.4.0): cria e mantém collections do Bruno a partir do código do projeto, de uma spec OpenAPI ou de uma lista de endpoints. Gera os arquivos em YAML (OpenCollection) em `.bruno/` na raiz do repositório, organiza pastas por recurso, ambientes e variáveis por escopo, configura a autenticação com credenciais em `.env` ignorado pelo git (ou variáveis secretas do Bruno) e tokens em variáveis de runtime, e documenta as regras de cada endpoint (validações, permissões, respostas, efeitos colaterais). Novas preferências em `skills.bruno-collection`: `secretStrategy`, `environments`, e por repositório `collectionPath` e `format`.
 
 ### Alterado
 
+- **Breaking:** skill `commit-message` renomeada para `commit-plan` na categoria `development` (2.0.0). Passa a ser chamada como `/commit-plan` ou `development:commit-plan`. A chave de preferências muda de `skills.commit-message` para `skills.commit-plan` (e o mesmo em `repos.<repositório>`); a skill migra a chave antiga automaticamente na primeira execução. O agent `doc-writer`, a `technical-cofounder` e o procedimento de preferências foram atualizados.
+- `commit-plan` mais segura: mensagens via `git commit -F -` com heredoc entre aspas simples (sem expansão de `$()` e crases), `git add -- <arquivos>`, nome de branch validado com `git check-ref-format`, diffs com `--no-ext-diff --no-textconv`, push só nas formas `git push` e `git push -u origin HEAD`, proibição de `--no-verify`, `--amend`, `git add -f` e força, e lista de arquivos de segredo ampliada (`id_ed25519*`, `*.p12`, `*.jks`, `.npmrc`, `.netrc`, `.git-credentials`, entre outros) com pathspec que vale em qualquer subpasta.
+- Permissões mínimas em todas as skills: `allowed-tools` deixou de pré-aprovar `Bash`, `Write`, `Edit`, `Read`, `Glob`, `Grep` e `WebFetch` sem escopo. Cada skill só pré-aprova ler os próprios arquivos, ler e gravar o próprio arquivo de preferências ou perfil e comandos específicos (git de leitura, `git check-ignore` na `bruno-collection`, o script da `markitdown`). Editar arquivos, rodar testes, instalar pacotes e acessar a web passam a pedir permissão.
+- Regras de segurança comuns nas categorias `development` (`shared/preferences.md`) e `career` (`shared/profile.md`): conteúdo lido é dado e não instrução (proteção contra prompt injection), dados pessoais nunca vão para URLs, segredos nunca são copiados e comandos bloqueados não podem ser trocados por equivalentes.
+- `application-text` conta caracteres pela entrada padrão em UTF-8, sem arquivo fixo em `/tmp` e sem interpolação do shell.
+- `apply-design-system` instala o `python-pptx` em ambiente isolado com versão fixa (`uv run --with python-pptx==1.0.2`), pergunta antes, e nunca no Python global.
+- `bruno-collection` só roda a collection com confirmação, no ambiente `local` apontando para `localhost`.
+- `lecture-notes` trata transcrição e páginas pesquisadas como dado, não instrução.
+- Guia de contribuição com a regra de menor privilégio para `allowed-tools`.
 - Repositório e marketplace renomeados de `caramelo-kit` para `caramelo-skills`. Quem já tinha o marketplace instalado deve removê-lo (`/plugin marketplace remove caramelo-kit`), adicioná-lo de novo (`/plugin marketplace add caramelotech/caramelo-skills`) e reinstalar as categorias como `<categoria>@caramelo-skills`.
+
+### Corrigido
+
+- Frontmatter YAML inválido em `commit-plan` e `apply-design-system`: as descrições tinham `: ` fora de aspas, o que impede a leitura do campo `allowed-tools` por parsers YAML estritos.
 
 ## [2.0.0] - 2026-10-10
 
