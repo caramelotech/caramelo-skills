@@ -10,7 +10,7 @@ O repositório tem quatro áreas principais: `skills/` (skills agrupadas por cat
 
 | Categoria                           | Descrição                                                                   |
 | ----------------------------------- | --------------------------------------------------------------------------- |
-| [`development`](skills/development) | Qualidade, revisão, segurança, testes, commits, collections do Bruno e MVPs |
+| [`development`](skills/development) | Qualidade, revisão, segurança, testes, commits, collections do Bruno, documentos em Markdown e MVPs |
 | [`writing`](skills/writing)         | Criação de textos, humanização e documentação                               |
 | [`devops`](skills/devops)           | Infraestrutura e containerização                                            |
 | [`design`](skills/design)           | Aplicação de design systems em apresentações e sites                        |
