@@ -1,7 +1,7 @@
 # Agent: Doc Writer
 
 **Tipo:** assistido  
-**Skills utilizadas:** `skills/development/skills/commit-message/SKILL.md`
+**Skills utilizadas:** `skills/development/skills/commit-plan/SKILL.md`
 
 ## Objetivo
 
