@@ -1,7 +1,15 @@
 ---
 name: bruno-collection
 description: Cria e mantém collections do Bruno (cliente de API open source) a partir do código de um projeto ou de uma lista de endpoints. Analisa rotas, DTOs, validações e guards para gerar as requisições em YAML (OpenCollection), organiza pastas e ambientes, configura variáveis e autenticação sem expor segredos (tokens e senhas em .env ignorado pelo git ou como variáveis secretas) e sempre documenta as regras de cada endpoint. Por padrão cria tudo em `.bruno/` na raiz do repositório. Use quando for pedido criar, atualizar ou documentar uma collection do Bruno, requisições do Bruno, arquivos .bru ou opencollection.yml, ou "documentar os endpoints no Bruno".
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
+allowed-tools:
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/development/preferences.json)
+  - Edit(~/.claude/development/preferences.json)
+  - Bash(git rev-parse --show-toplevel)
+  - Bash(git remote get-url origin)
+  - Bash(git check-ignore *)
+  - Edit(./.bruno/**)
+  - AskUserQuestion
 ---
 
 # Bruno Collection
@@ -182,7 +190,7 @@ Quando a API exigir autenticação, siga `references/auth-patterns.md`:
   - Toda `{{variavel}}` usada está declarada em algum escopo, ou é preenchida em runtime por uma requisição documentada como dependência.
   - Nenhum segredo literal: procure por padrões como `Bearer ey`, `password:`, `apiKey:`, `sk_`, `-----BEGIN` nos arquivos gerados.
   - `.env` está ignorado (`git check-ignore <collectionPath>/.env`).
-  - Se o `bru` CLI estiver instalado e a API estiver rodando localmente, ofereça rodar as leituras seguras: `bru run --env local --tags smoke` a partir da pasta da collection. Não rode requisições de escrita sem confirmação.
+  - Se o `bru` CLI estiver instalado e a API estiver rodando localmente, ofereça rodar as leituras seguras: `bru run --env local --tags smoke` a partir da pasta da collection. Rodar requisições sempre pede confirmação (mesmo no modo `autonomo`), só com o ambiente `local` e só depois de conferir que a `baseUrl` dele aponta para `localhost`, `127.0.0.1` ou `[::1]`. Nunca rode a collection contra staging ou produção nem requisições de escrita sem a pessoa pedir explicitamente.
 
 ## Relatório final
 

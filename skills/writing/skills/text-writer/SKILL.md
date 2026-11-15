@@ -7,9 +7,8 @@ description: |
   palavras-chave. Aplica automaticamente a skill text-humanizer ao final para
   produzir um resultado natural, com som humano e livre de padrões de escrita de IA.
 allowed-tools:
-  - Read
-  - Write
-  - Edit
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Skill
   - AskUserQuestion
 ---
 

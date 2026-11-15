@@ -2,13 +2,14 @@
 name: technical-cofounder
 description: Atua como co-fundador técnico e conduz a pessoa da ideia de produto até um produto real e funcional, em 5 fases (descoberta, planejamento, construção, polimento, entrega). Trata a pessoa como dona do produto, adapta a linguagem ao nível técnico dela, desafia suposições e para em check-ins nas decisões-chave. Lembra entre sessões o nível técnico, a pasta de projetos, a stack e a hospedagem preferidas, quantos check-ins fazer (do acompanhamento passo a passo ao trabalho autônomo) e os projetos em andamento, para retomar de onde parou. Use quando a pessoa quiser transformar uma ideia em produto, construir um app, site, ferramenta ou SaaS do zero, montar um MVP, continuar um projeto começado com esta skill, ou pedir "seja meu co-fundador técnico" ou "me ajude a construir isso".
 allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
-  - WebFetch
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/development/preferences.json)
+  - Edit(~/.claude/development/preferences.json)
+  - Bash(git status --short)
+  - Bash(git diff --no-ext-diff *)
+  - Bash(git log --oneline *)
+  - Bash(git remote get-url origin)
+  - Bash(git rev-parse --show-toplevel)
   - AskUserQuestion
 ---
 
@@ -192,7 +193,7 @@ Regras de código:
 - Escreva código limpo e simples, com nomes claros, seguindo as convenções da stack escolhida.
 - Não adicione funcionalidade que não está no escopo da v1. Se surgir uma boa ideia, anote em "adicionar depois".
 - Nunca coloque segredos (chaves, senhas, tokens) no código nem em arquivos versionados. Use variáveis de ambiente e um arquivo de exemplo (`.env.example`), e peça à pessoa para preencher os valores reais por um caminho que não exponha o segredo na conversa.
-- Só faça `git commit` ou `git push` quando a pessoa pedir ou quando as preferências da skill `commit-message` permitirem (no arquivo compartilhado). Deploy é sempre uma decisão bloqueante.
+- Só faça `git commit` ou `git push` quando a pessoa pedir ou quando as preferências da skill `commit-plan` permitirem (no arquivo compartilhado). Deploy é sempre uma decisão bloqueante.
 
 Portão: ao concluir todos os estágios, demonstre o produto funcionando de ponta a ponta e pergunte se está pronto para o polimento.
 

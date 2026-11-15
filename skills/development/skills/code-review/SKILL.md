@@ -1,7 +1,17 @@
 ---
 name: code-review
 description: Revisa código em busca de bugs, vulnerabilidades de segurança, problemas de performance e manutenibilidade. Lembra as preferências da pessoa entre sessões (onde entregar a revisão, severidade mínima, se deve só sugerir, perguntar ou aplicar as correções, e se inclui a checagem OWASP), para trabalhar de forma autônoma quando ela quiser. Use quando for solicitado revisar, analisar ou dar feedback sobre código.
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Skill, AskUserQuestion
+allowed-tools:
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/development/preferences.json)
+  - Edit(~/.claude/development/preferences.json)
+  - Bash(git status --short)
+  - Bash(git diff --no-ext-diff *)
+  - Bash(git log --oneline *)
+  - Bash(git remote get-url origin)
+  - Bash(git rev-parse --show-toplevel)
+  - Skill
+  - AskUserQuestion
 ---
 
 # Code Review

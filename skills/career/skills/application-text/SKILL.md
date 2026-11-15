@@ -2,13 +2,9 @@
 name: application-text
 description: Gera o texto curto e personalizado para o campo de candidatura de plataformas de recrutamento (Gupy, por padrão com limite de 1500 caracteres, ou outro limite informado), com base na descrição da vaga (texto ou URL) e na trajetória profissional da pessoa. Antes de escrever, roda a preparação da skill interview-prep, então a nota de candidatura sai completa - dados da vaga, preparação de entrevista e texto da candidatura juntos. No primeiro uso coleta onde está a trajetória (arquivo, currículo, LinkedIn ou outro link, ou ajuda a criá-la se a pessoa não tiver), onde salvar e o idioma, e guarda no perfil de carreira compartilhado; depois só a vaga é necessária. Use quando a pessoa pedir texto para candidatura no Gupy ou em outro formulário de vaga com limite de caracteres.
 allowed-tools:
-  - Read
-  - Glob
-  - Grep
-  - Write
-  - Edit
-  - Bash
-  - WebFetch
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/career/profile.json)
+  - Edit(~/.claude/career/profile.json)
   - Skill
   - AskUserQuestion
 ---
@@ -76,13 +72,15 @@ Escreva no idioma do perfil (ou de `--idioma`; com `vaga`, no idioma da descriç
 
 O texto final deve ter **no máximo `limite` caracteres** (padrão 1500), contando espaços, pontuação e quebras de linha.
 
-Conte com precisão em vez de estimar. Grave o texto em um arquivo temporário e conte **caracteres**, não bytes (`wc -c` conta bytes e superestima textos com acentos):
+Conte com precisão em vez de estimar. Conte **caracteres**, não bytes (`wc -c` conta bytes e superestima textos com acentos). Passe o texto pela entrada padrão com heredoc de delimitador entre aspas simples, sem arquivo temporário e sem interpolação do shell:
 
 ```bash
-python -c "import sys; print(len(open(sys.argv[1], encoding='utf-8').read().rstrip('\n')))" /tmp/application-text.txt
+python -I -c "import sys; print(len(sys.stdin.buffer.read().decode('utf-8').rstrip('\r\n')))" <<'TXT'
+<texto final>
+TXT
 ```
 
-Se `python` não existir, use `LC_ALL=C.UTF-8 wc -m < /tmp/application-text.txt` e desconte a quebra de linha final. Use a pasta temporária do sistema ou do agente no lugar de `/tmp` quando for o caso.
+Se `python` não existir, use `LC_ALL=C.UTF-8 wc -m` com o mesmo heredoc e desconte a quebra de linha final. O comando pede permissão na primeira vez; não troque por outro para evitar o pedido.
 
 Se passar do limite, corte passagens genéricas ou detalhes menos relevantes para a vaga. Nunca corte as menções às tecnologias exigidas que a trajetória comprova. Conte de novo depois de cada corte.
 

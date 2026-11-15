@@ -9,11 +9,7 @@ description: |
   de chatbot. Calibrado especificamente para padrões do PT-BR - não é tradução de
   guias em inglês.
 allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Grep
-  - Glob
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
   - AskUserQuestion
 ---
 

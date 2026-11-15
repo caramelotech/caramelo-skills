@@ -2,13 +2,9 @@
 name: linkedin-review
 description: Avalia um perfil do LinkedIn contra um objetivo de carreira e gera um relatório .md com ajustes sugeridos por seção (título, Sobre, Experiência, competências e palavras-chave, Destaques, simulação de recrutador e DMs de prospecção), cada um com o racional da decisão. No primeiro uso coleta o link do perfil, o setor, o cargo-alvo e as empresas-alvo, e guarda no perfil de carreira compartilhado; nas próximas rodadas reaproveita tudo e compara com a avaliação anterior. Usa a trajetória profissional salva para completar métricas sem inventar. Use quando a pessoa pedir para revisar, auditar, otimizar ou reescrever o perfil do LinkedIn, ou para atrair recrutadores.
 allowed-tools:
-  - Read
-  - Glob
-  - Grep
-  - Write
-  - Edit
-  - Bash
-  - WebFetch
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/career/profile.json)
+  - Edit(~/.claude/career/profile.json)
   - Skill
   - AskUserQuestion
 ---

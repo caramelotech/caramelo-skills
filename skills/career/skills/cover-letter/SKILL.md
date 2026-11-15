@@ -2,13 +2,9 @@
 name: cover-letter
 description: Gera uma carta de apresentação completa para candidatura de emprego (formato de carta, para e-mail, LinkedIn ou anexo de currículo) a partir da descrição da vaga (texto ou URL) e da trajetória profissional da pessoa. No primeiro uso, coleta onde está a trajetória (arquivo, currículo, LinkedIn ou outro link, ou ajuda a criá-la se a pessoa não tiver), o formato de saída, onde salvar e o idioma, e guarda no perfil de carreira compartilhado com as outras skills da categoria para não perguntar de novo; a partir daí só a vaga é necessária. Use quando a pessoa pedir carta de apresentação, cover letter, carta para candidatura ou texto de apresentação para uma vaga.
 allowed-tools:
-  - Read
-  - Glob
-  - Grep
-  - Write
-  - Edit
-  - Bash
-  - WebFetch
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/career/profile.json)
+  - Edit(~/.claude/career/profile.json)
   - Skill
   - AskUserQuestion
 ---

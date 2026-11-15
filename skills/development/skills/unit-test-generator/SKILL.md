@@ -1,7 +1,16 @@
 ---
 name: unit-test-generator
 description: Gera testes unitários para uma função ou classe, cobrindo caminho feliz, casos de borda e cenários de erro. Lembra as preferências da pessoa entre sessões (escrever os arquivos de teste ou só mostrar no chat, rodar os testes, padrão de nomes) e o framework e a pasta de testes de cada repositório, para trabalhar de forma autônoma quando ela quiser. Use quando for solicitado escrever, criar ou gerar testes.
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
+allowed-tools:
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/development/preferences.json)
+  - Edit(~/.claude/development/preferences.json)
+  - Bash(git status --short)
+  - Bash(git diff --no-ext-diff *)
+  - Bash(git log --oneline *)
+  - Bash(git remote get-url origin)
+  - Bash(git rev-parse --show-toplevel)
+  - AskUserQuestion
 ---
 
 # Unit Test Generator

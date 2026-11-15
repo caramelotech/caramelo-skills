@@ -1,7 +1,16 @@
 ---
 name: owasp-check
 description: Analisa código em busca de vulnerabilidades de segurança do OWASP Top 10, com classificação de severidade e exemplos de correção. Lembra as preferências da pessoa entre sessões (onde entregar o relatório, severidade mínima e se deve só sugerir, perguntar ou aplicar as correções), para trabalhar de forma autônoma quando ela quiser. Use quando for solicitada uma revisão de segurança, identificação de vulnerabilidades ou auditoria de segurança do código.
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
+allowed-tools:
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/development/preferences.json)
+  - Edit(~/.claude/development/preferences.json)
+  - Bash(git status --short)
+  - Bash(git diff --no-ext-diff *)
+  - Bash(git log --oneline *)
+  - Bash(git remote get-url origin)
+  - Bash(git rev-parse --show-toplevel)
+  - AskUserQuestion
 ---
 
 # OWASP Security Check

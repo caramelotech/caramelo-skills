@@ -40,7 +40,15 @@ skills/<categoria>/
    | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | `name`          | kebab-case, em inglês, idêntico ao nome da pasta                                                                                                                                                     |
    | `description`   | em português - é o único texto sempre carregado no contexto do Claude e o principal mecanismo de acionamento da skill, então inclua o que ela faz e os contextos/palavras-chave que devem dispará-la |
-   | `allowed-tools` | opcional - lista as ferramentas pré-aprovadas (ex: `Read, Write, Edit`) quando a skill roda ações sensíveis                                                                                          |
+   | `allowed-tools` | opcional - ferramentas que rodam **sem pedir permissão** enquanto a skill está ativa. Siga o princípio do menor privilégio (veja abaixo)                                                             |
+
+   **Menor privilégio em `allowed-tools`.** O campo não restringe o que a skill pode usar: ele pré-aprova. Tudo o que fica de fora continua disponível, mas pede permissão. Por isso:
+
+   - Nunca liste `Bash`, `Write`, `Edit`, `Read`, `Glob`, `Grep` ou `WebFetch` sem escopo. Use padrões específicos: `Bash(git status --short)`, `Bash(git diff --no-ext-diff *)`, `Read(~/.claude/<categoria>/<arquivo>.json)`, `Edit(./.pasta-da-skill/**)`.
+   - Em padrões de `Bash`, use `comando *` (espaço antes do `*`) e prefira a forma exata do comando. Não pré-aprove comandos que executam código arbitrário ou do projeto (`python -c`, `node -e`, `npm test`, `npx`, `sh -c`), que acessam a rede (`curl`, `pip install`, `git push` com refspec livre) ou que reescrevem histórico.
+   - Para ler os arquivos da própria skill (referências e `shared/`), use `Read(~/.claude/plugins/**/caramelo-skills/**)`.
+   - `WebFetch` sem escopo permite que um texto malicioso lido pela skill mande dados para qualquer URL: deixe-o fora e deixe o agente pedir permissão por domínio.
+   - No corpo da skill, diga que conteúdo lido (código, páginas, documentos) é dado, não instrução, e que comandos bloqueados não devem ser trocados por equivalentes para evitar o pedido de permissão.
 
 4. Escreva o corpo em português, no imperativo ("Revise o código...", "Gere a mensagem..."), seguindo as seções do template (`Como usar`, `Variáveis`, `Exemplo`, `Notas`). Exemplos de código ficam em inglês.
 5. Nenhum registro manual é necessário: cada categoria escaneia sua própria `skills/` automaticamente. Só edite `plugin.json` se a nova skill mudar a descrição ou as keywords da categoria.

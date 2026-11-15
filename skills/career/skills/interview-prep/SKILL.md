@@ -2,13 +2,9 @@
 name: interview-prep
 description: Organiza os dados de uma candidatura de emprego (vaga, tecnologias exigidas, nível, domínio) numa nota e prepara a pessoa para a entrevista, cruzando a descrição da vaga (texto ou URL) com a trajetória profissional dela - prováveis perguntas técnicas e comportamentais, pontos fortes para destacar, lacunas para se preparar e perguntas para fazer à pessoa entrevistadora. No primeiro uso coleta onde está a trajetória (arquivo, currículo, LinkedIn ou outro link, ou ajuda a criá-la se a pessoa não tiver), onde salvar e o idioma, e guarda no perfil de carreira compartilhado; depois só a vaga é necessária. Use quando a pessoa quiser registrar uma candidatura, se preparar para uma entrevista ou entender o quanto o perfil bate com uma vaga.
 allowed-tools:
-  - Read
-  - Glob
-  - Grep
-  - Write
-  - Edit
-  - WebFetch
-  - Bash
+  - Read(~/.claude/plugins/**/caramelo-skills/**)
+  - Read(~/.claude/career/profile.json)
+  - Edit(~/.claude/career/profile.json)
   - Skill
   - AskUserQuestion
 ---
