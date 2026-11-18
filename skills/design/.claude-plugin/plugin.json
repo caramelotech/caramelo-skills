@@ -1,11 +1,11 @@
 {
   "name": "design",
-  "version": "1.0.0",
-  "description": "Skills de identidade visual: aplicação de design systems em apresentações e sites",
+  "version": "1.1.0",
+  "description": "Skills de design: aplicação de design systems e princípios de UX e animação em apresentações e sites",
   "author": {
     "name": "Caramelo Tech",
     "url": "https://github.com/caramelotech"
   },
   "license": "MIT",
-  "keywords": ["design-system", "presentation", "branding", "html", "pptx"]
+  "keywords": ["design-system", "presentation", "branding", "html", "pptx", "ux", "usability", "animation", "motion", "accessibility"]
 }

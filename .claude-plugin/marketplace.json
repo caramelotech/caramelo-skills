@@ -31,9 +31,9 @@
     {
       "name": "design",
       "source": "./skills/design",
-      "description": "Design system application for presentations and sites",
+      "description": "Design system application and UX and motion principles for presentations and sites",
       "category": "design",
-      "tags": ["design-system", "presentation", "branding"]
+      "tags": ["design-system", "presentation", "branding", "ux", "animation"]
     },
     {
       "name": "study",
